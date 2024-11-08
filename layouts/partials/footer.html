@@ -15,8 +15,13 @@
     {{ end }}
         <!--
           <span>:: <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">Theme</a> made by <a href="https://github.com/panr" target="_blank">panr</a></span>
-        -->
+
         <span>[<a href="https://github.com/landonb/tallybark.com">source</a>]</span>
+        {{ "{{ if $.Site.Params.SiteSourceURL }}" }}
+        -->
+        {{ if isset $.Site.Params "siteSourceURL" }}
+          <span>[<a href="{{ $.Site.Params.SiteSourceURL }}">source</a>]</span>
+        {{ end }}
       </div>
   </div>
 </footer>
