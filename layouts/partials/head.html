@@ -28,8 +28,44 @@
 {{- end }}
 
 <!-- Icons -->
-<link rel="shortcut icon" href="{{ "favicon.png" | absURL }}">
+<!-- "shortcut icon" is discouraged (and was never standardized)
+  	   https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel#icon
+       https://www.drupal.org/project/dfm/issues/3221567
+       https://mathiasbynens.be/notes/rel-shortcut-icon
+
+  <link rel="shortcut icon" href="{{ "favicon.png" | absURL }}">
+-->
+<!-- MAYBE: Add back to config, e.g.,
+  {{ if isset $.Site.Params "favicon" }}
+    ...
+  {{ else }}
+    ...
+  {{ end }}
+-->
+<!-- FIXME/2024-11-08 10:38: Verify renders as /favicon.ico -->
+<!-- Specify 32×32 to work around Chrome bug so it chooses SVG -->
+<link rel="icon" href="{{ "favicon.ico" | absURL }} sizes="32x32">
+<link rel="icon" href="{{ "favicon.svg" | absURL }} type="image/svg+xml">
+<!-- iOS icon is 180×180 (scaled to 140×140 with 40p border added ) -->
 <link rel="apple-touch-icon" href="{{ "apple-touch-icon.png" | absURL }}">
+<!-- REFER:
+      https://w3c.github.io/manifest/
+      https://maskable.app/
+-->
+<!-- FIXME/2024-11-08 11:00: Demo "standalone", maybe "*_color"s, too:
+  {
+    "name":"",
+    "short_name":"",
+    "icons": [
+      {"src": "/android-chrome-192x192.png", "sizes":"192x192", "type":"image/png" },
+      {"src": "/android-chrome-512x512.png", "sizes":"512x512", "type":"image/png"}
+    ],
+    "theme_color":"#ffffff",
+    "background_color":"#ffffff",
+    "display":"standalone"
+  }
+-->
+<link rel="manifest" href="{{ "manifest.webmanifest" | absURL }}">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary" />
