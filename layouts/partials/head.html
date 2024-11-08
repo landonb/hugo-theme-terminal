@@ -11,6 +11,13 @@
 {{ end }}
 <link rel="canonical" href="{{ .Permalink }}" />
 
+<!-- MAYBE/2024-11-08 12:41: Reaplce w/ async?
+  < !--
+    // All our visitors are on modern brows, eh.
+    {{ template "_internal/google_analytics.html" . }}
+  -- >
+  {{ template "_internal/google_analytics_async.html" . }}
+-->
 {{ template "_internal/google_analytics.html" . }}
 
 {{ $css := resources.Match "css/*.css" }}
