@@ -2,12 +2,21 @@
   <div class="footer__inner">
     {{ if $.Site.Copyright }}
       <div class="copyright copyright--user">
-        <span>{{ $.Site.Copyright | safeHTML }}</span>
+        <!--
+          <span>{{ $.Site.Copyright | safeHTML }}</span>
+        -->
+        <span>Copyright © {{ $.Site.Params.Copyyears | safeHTML }} {{ $.Site.Copyright | safeHTML }}</span>
     {{ else }}
       <div class="copyright">
-        <span>© {{ now.Year }} Powered by <a href="https://gohugo.io">Hugo</a></span>
+        <!--
+          <span>© {{ now.Year }} Powered by <a href="https://gohugo.io">Hugo</a></span>
+        -->
+        <span>© {{ now.Year }}. All rights reserved.</span>
     {{ end }}
-      <span>:: <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">Theme</a> made by <a href="https://github.com/panr" target="_blank">panr</a></span>
+        <!--
+          <span>:: <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">Theme</a> made by <a href="https://github.com/panr" target="_blank">panr</a></span>
+        -->
+        <span>[<a href="https://github.com/landonb/tallybark.com">source</a>]</span>
       </div>
   </div>
 </footer>
